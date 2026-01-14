@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique - CIAP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ciap-red': '#8B1E1E',
+                        'ciap-dark': '#111111',
+                        'ciap-bg': '#f9f9f9',
+                        'ciap-paper': '#f0f0f0'
+                    },
+                    fontFamily: {
+                        'serif': ['"Cormorant Garamond"', 'serif'],
+                        'display': ['"Cinzel"', 'serif'],
+                        'sans': ['"Lato"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            color: #2d2d2d;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        }
+        .nav-link {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 2px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #8B1E1E;
+            transform-origin: bottom right;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen font-sans antialiased selection:bg-ciap-red selection:text-white">
+
+    <!-- Top Bar -->
+    <div class="bg-ciap-dark text-white/80 text-[10px] md:text-xs py-2 px-4 tracking-[0.2em] text-center uppercase font-sans border-b border-white/10">
+        Philosophie &bull; Afrique &bull; Diaspora
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50 transition-all duration-300 shadow-sm">
+        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo & Brand -->
+                <a href="index.html" class="flex items-center gap-4 group">
+                    <img src="assets/img/BI_CIAP.jpg" alt="Logo CIAP" class="h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                    <div class="hidden md:block border-l border-gray-300 pl-4 py-1">
+                        <span class="block font-display text-2xl text-ciap-dark font-bold tracking-wide leading-none group-hover:text-ciap-red transition-colors duration-300">CIAP</span>
+                        <span class="block font-serif text-sm text-gray-500 italic mt-1 leading-none">Conseil Inter-Africain de Philosophie</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index.html" class="font-sans text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red transition-colors nav-link">Accueil</a>
+                    <a href="historique.html" class="font-sans text-xs font-bold uppercase tracking-widest text-ciap-red nav-link">Historique</a>
+                    <a href="statuts.html" class="font-sans text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red transition-colors nav-link">Statuts</a>
+                    <a href="revue.html" class="font-sans text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red transition-colors nav-link">Revue</a>
+                    <a href="membres.html" class="font-sans text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red transition-colors nav-link">Membres</a>
+                    <a href="colloque.html" class="font-sans text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red transition-colors nav-link">Colloque</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-600 hover:text-ciap-red focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Panel -->
+            <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-gray-100 animate-fade-in-down">
+                <nav class="flex flex-col space-y-4 pb-4">
+                    <a href="index.html" class="font-sans text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red pl-2 border-l-2 border-transparent hover:border-ciap-red hover:bg-gray-50 py-2 transition-all">Accueil</a>
+                    <a href="historique.html" class="font-sans text-sm font-bold uppercase tracking-widest text-ciap-red pl-2 border-l-2 border-ciap-red bg-gray-50 py-2">Historique</a>
+                    <a href="statuts.html" class="font-sans text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red pl-2 border-l-2 border-transparent hover:border-ciap-red hover:bg-gray-50 py-2 transition-all">Statuts</a>
+                    <a href="revue.html" class="font-sans text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red pl-2 border-l-2 border-transparent hover:border-ciap-red hover:bg-gray-50 py-2 transition-all">Revue</a>
+                    <a href="membres.html" class="font-sans text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red pl-2 border-l-2 border-transparent hover:border-ciap-red hover:bg-gray-50 py-2 transition-all">Membres</a>
+                    <a href="colloque.html" class="font-sans text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red pl-2 border-l-2 border-transparent hover:border-ciap-red hover:bg-gray-50 py-2 transition-all">Colloque</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16 flex-grow max-w-4xl">
+        <header class="mb-12 text-center">
+            <span class="inline-block mb-4 text-ciap-red font-serif italic text-lg">Nos Origines</span>
+            <h1 class="font-display text-4xl md:text-6xl text-ciap-dark mb-6">Historique</h1>
+            <div class="w-16 h-1 bg-ciap-red mx-auto"></div>
+        </header>
+
+        <div class="bg-white p-8 md:p-12 shadow-sm border border-gray-100 relative">
+             <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-ciap-red to-ciap-dark"></div>
+             
+             <div class="prose prose-lg prose-stone mx-auto font-serif text-gray-700 leading-loose">
+                <p class="mb-8 first-letter:text-5xl first-letter:font-display first-letter:text-ciap-red first-letter:float-left first-letter:mr-3 first-letter:mt-[-5px]">
+                    Le Conseil Inter-Africain de Philosophie (CIAP) a été relancé lors du colloque d’hommage à <strong>Paulin J. Hountondji</strong>, tenu du 3 au 5 février 2025 à Cotonou. Cette initiative marque un tournant décisif pour la communauté philosophique continentale.
+                </p>
+                <p class="mb-8">
+                    La réunion effective de lancement s’est tenue en ligne le <strong>27 juillet 2025</strong>, sous la présidence tripartite des professeurs :
+                </p>
+                <div class="bg-ciap-paper p-6 mb-8 border-l-4 border-ciap-red">
+                    <ul class="list-none space-y-3 italic text-lg">
+                        <li class="flex items-center"><span class="w-2 h-2 bg-ciap-red rounded-full mr-3"></span> Souleymane Bachir Diagne</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-ciap-red rounded-full mr-3"></span> Tanella Boni</li>
+                        <li class="flex items-center"><span class="w-2 h-2 bg-ciap-red rounded-full mr-3"></span> Abel Kouvouama</li>
+                    </ul>
+                </div>
+                <p class="mb-8">
+                    Le CIAP, initialement conçu comme une fédération des sociétés africaines de philosophie, entend désormais répondre aux grands défis de la présence philosophique africaine. Il rassemble les associations philosophiques d’Afrique et de la diaspora dans un esprit de collaboration et d'excellence intellectuelle.
+                </p>
+                <p class="text-xl font-semibold text-ciap-dark mt-12 pt-8 border-t border-gray-200 text-center">
+                    Le Pr Abdoulaye Elimane Kane assume actuellement la présidence par intérim.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-ciap-paper border-t border-gray-200 pt-16 pb-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <img src="assets/img/BI_CIAP.jpg" alt="Logo CIAP" class="h-16 w-auto mx-auto mb-6 mix-blend-multiply opacity-80">
+            <h4 class="font-display text-xl font-bold text-ciap-dark mb-2">CIAP</h4>
+            <p class="font-serif text-gray-500 italic mb-8 max-w-md mx-auto">Fédération des sociétés africaines de philosophie</p>
+            
+            <div class="text-[10px] text-gray-400 font-sans uppercase tracking-widest border-t border-gray-200 pt-8">
+                &copy; 2026 Conseil Inter-Africain de Philosophie. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

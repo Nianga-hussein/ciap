@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colloque Paulin Hountondji - CIAP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.3.1/index.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ciap-red': '#8B1E1E',
+                        'ciap-dark': '#111111',
+                        'ciap-bg': '#f9f9f9',
+                        'ciap-paper': '#f0f0f0'
+                    },
+                    fontFamily: {
+                        'serif': ['"Cormorant Garamond"', 'serif'],
+                        'display': ['"Cinzel"', 'serif'],
+                        'sans': ['"Lato"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('https://www.transparenttextures.com/patterns/cream-paper.png')",
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            color: #2d2d2d;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+        }
+        .nav-link {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 2px;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #8B1E1E;
+            transform-origin: bottom right;
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen font-sans antialiased selection:bg-ciap-red selection:text-white">
+
+    <!-- Top Bar -->
+    <div class="bg-ciap-dark text-white/80 text-[10px] md:text-xs py-2 px-4 tracking-[0.2em] text-center uppercase font-sans border-b border-white/10">
+        Philosophie &bull; Afrique &bull; Diaspora
+    </div>
+
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50 transition-all duration-300 shadow-sm">
+        <div class="container mx-auto px-4 md:px-6 py-3 md:py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo & Brand -->
+                <a href="index.html" class="flex items-center gap-4 group">
+                    <img src="assets/img/BI_CIAP.jpg" alt="Logo CIAP" class="h-12 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                    <div class="hidden md:block border-l border-gray-300 pl-4 py-1">
+                        <span class="block font-display text-2xl text-ciap-dark font-bold tracking-wide leading-none group-hover:text-ciap-red transition-colors duration-300">CIAP</span>
+                        <span class="block font-serif text-sm text-gray-500 italic mt-1 leading-none">Conseil Inter-Africain de Philosophie</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index.html" class="font-sans text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red transition-colors nav-link">Accueil</a>
+                    <a href="historique.html" class="font-sans text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red transition-colors nav-link">Historique</a>
+                    <a href="statuts.html" class="font-sans text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red transition-colors nav-link">Statuts</a>
+                    <a href="revue.html" class="font-sans text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red transition-colors nav-link">Revue</a>
+                    <a href="membres.html" class="font-sans text-xs font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red transition-colors nav-link">Membres</a>
+                    <a href="colloque.html" class="font-sans text-xs font-bold uppercase tracking-widest text-ciap-red nav-link">Colloque</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-600 hover:text-ciap-red focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu Panel -->
+            <div id="mobile-menu" class="hidden lg:hidden mt-4 pt-4 border-t border-gray-100 animate-fade-in-down">
+                <nav class="flex flex-col space-y-4 pb-4">
+                    <a href="index.html" class="font-sans text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red pl-2 border-l-2 border-transparent hover:border-ciap-red hover:bg-gray-50 py-2 transition-all">Accueil</a>
+                    <a href="historique.html" class="font-sans text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red pl-2 border-l-2 border-transparent hover:border-ciap-red hover:bg-gray-50 py-2 transition-all">Historique</a>
+                    <a href="statuts.html" class="font-sans text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red pl-2 border-l-2 border-transparent hover:border-ciap-red hover:bg-gray-50 py-2 transition-all">Statuts</a>
+                    <a href="revue.html" class="font-sans text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red pl-2 border-l-2 border-transparent hover:border-ciap-red hover:bg-gray-50 py-2 transition-all">Revue</a>
+                    <a href="membres.html" class="font-sans text-sm font-bold uppercase tracking-widest text-gray-600 hover:text-ciap-red pl-2 border-l-2 border-transparent hover:border-ciap-red hover:bg-gray-50 py-2 transition-all">Membres</a>
+                    <a href="colloque.html" class="font-sans text-sm font-bold uppercase tracking-widest text-ciap-red pl-2 border-l-2 border-ciap-red bg-gray-50 py-2">Colloque</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-16 flex-grow max-w-6xl">
+        <header class="mb-12 text-center">
+            <span class="inline-block mb-4 text-ciap-red font-serif italic text-lg">Événements & Archives</span>
+            <h1 class="font-display text-4xl md:text-6xl text-ciap-dark mb-6">Hommage à Paulin J. Hountondji</h1>
+            <p class="font-serif text-xl text-gray-500 italic">3 au 5 février 2025 — Cotonou, Bénin</p>
+            <div class="w-16 h-1 bg-ciap-red mx-auto mt-6"></div>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16 items-center">
+            <div class="prose prose-lg prose-stone font-serif text-gray-600">
+                <p>
+                    Ce colloque international a marqué la relance du <strong>Conseil Inter-Africain de Philosophie (CIAP)</strong>. Il a rendu un vibrant hommage au professeur Paulin J. Hountondji, figure majeure de la philosophie africaine.
+                </p>
+                <p>
+                    L'événement a rassemblé des philosophes et chercheurs venus de toute l'Afrique et de la diaspora pour échanger sur l'héritage intellectuel de Paulin Hountondji et les perspectives d'avenir de la philosophie sur le continent.
+                </p>
+                <div class="mt-8">
+                    <a href="assets/docs/Hommage_Paulin_Hountondji_Programme.pdf" class="inline-flex items-center px-6 py-3 border border-ciap-dark text-ciap-dark hover:bg-ciap-dark hover:text-white transition uppercase font-sans text-xs font-bold tracking-widest">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        Télécharger le Programme
+                    </a>
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="absolute -inset-2 bg-ciap-red opacity-10 group-hover:opacity-20 transition duration-500 blur-lg"></div>
+                <img src="assets/img/Proposition_3A-01.jpg" alt="Affiche colloque" class="relative shadow-lg border-4 border-white">
+            </div>
+        </div>
+
+        <h2 class="font-display text-2xl text-ciap-dark mb-8 text-center border-b border-gray-200 pb-4">Galerie Souvenirs</h2>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <a data-fslightbox="gallery" href="assets/img/group_photo.jpg" class="group block overflow-hidden relative">
+                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition duration-300 z-10"></div>
+                <img src="assets/img/group_photo.jpg" alt="Photo de groupe" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+            </a>
+            <a data-fslightbox="gallery" href="assets/img/IMG_5352.jpg" class="group block overflow-hidden relative">
+                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition duration-300 z-10"></div>
+                <img src="assets/img/IMG_5352.jpg" alt="Photo Colloque 1" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+            </a>
+            <a data-fslightbox="gallery" href="assets/img/IMG_5371.jpg" class="group block overflow-hidden relative">
+                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition duration-300 z-10"></div>
+                <img src="assets/img/IMG_5371.jpg" alt="Photo Colloque 2" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+            </a>
+            <a data-fslightbox="gallery" href="assets/img/IMG_5540.jpg" class="group block overflow-hidden relative">
+                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition duration-300 z-10"></div>
+                <img src="assets/img/IMG_5540.jpg" alt="Photo Colloque 3" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+            </a>
+            <a data-fslightbox="gallery" href="assets/img/Proposition_3A-01.jpg" class="group block overflow-hidden relative">
+                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition duration-300 z-10"></div>
+                <img src="assets/img/Proposition_3A-01.jpg" alt="Proposition Visuelle" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+            </a>
+            <a data-fslightbox="gallery" href="assets/img/BI_CIAP.jpg" class="group block overflow-hidden relative">
+                <div class="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition duration-300 z-10"></div>
+                <img src="assets/img/BI_CIAP.jpg" alt="Bannière CIAP" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-500">
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-ciap-paper border-t border-gray-200 pt-16 pb-8 mt-12">
+        <div class="container mx-auto px-6 text-center">
+            <img src="assets/img/BI_CIAP.jpg" alt="Logo CIAP" class="h-16 w-auto mx-auto mb-6 mix-blend-multiply opacity-80">
+            <h4 class="font-display text-xl font-bold text-ciap-dark mb-2">CIAP</h4>
+            <p class="font-serif text-gray-500 italic mb-8 max-w-md mx-auto">Fédération des sociétés africaines de philosophie</p>
+            
+            <div class="text-[10px] text-gray-400 font-sans uppercase tracking-widest border-t border-gray-200 pt-8">
+                &copy; 2026 Conseil Inter-Africain de Philosophie. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
