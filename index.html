@@ -36,6 +36,11 @@
             color: #2d2d2d;
             background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
         }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
         .nav-link {
             position: relative;
             display: inline-block;
@@ -62,6 +67,78 @@
             background-size: 20px 20px;
             background-position: 0 0, 10px 10px;
             opacity: 0.03;
+        }
+
+        /* Hero Slider Styles */
+        .hero-slider {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            animation: heroSlideShow 25s infinite;
+        }
+        .hero-slide:nth-child(1) {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/img/hero/one-continent-one-future-symbol-unity-hope.jpg');
+            animation-delay: 0s;
+        }
+        .hero-slide:nth-child(2) {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/img/hero/planet-hands-person-created-with-help-generative-ai-technology.jpg');
+            animation-delay: 5s;
+        }
+        .hero-slide:nth-child(3) {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/img/hero/representation-collective-mind-process-concept-digital-art-style.jpg');
+            animation-delay: 10s;
+        }
+        .hero-slide:nth-child(4) {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/img/hero/small-table-lamp-world-map-copy-space.jpg');
+            animation-delay: 15s;
+        }
+        .hero-slide:nth-child(5) {
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('assets/img/hero/representation-collective-mind-process-concept-digital-art-style (1).jpg');
+            animation-delay: 20s;
+        }
+
+        @keyframes heroSlideShow {
+            0%, 8%, 100% { opacity: 0; }
+            13%, 33% { opacity: 1; }
+            38%, 95% { opacity: 0; }
+        }
+
+        @media (max-width: 640px) {
+            .hero-slide {
+                background-position: center top;
+            }
+            .facebook-box {
+                padding: 1.25rem;
+            }
+        }
+
+        .facebook-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .facebook-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
         }
     </style>
 </head>
@@ -118,22 +195,43 @@
     </header>
 
     <!-- Hero / Intro -->
-    <section class="relative pt-20 pb-24 md:pt-32 md:pb-36 text-center overflow-hidden">
-        <div class="absolute inset-0 hero-pattern pointer-events-none"></div>
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-ciap-red/5 rounded-full blur-3xl -z-10"></div>
+    <section class="relative pt-20 pb-24 md:pt-32 md:pb-40 text-center overflow-hidden min-h-[480px] md:min-h-[600px] flex items-center">
+        <!-- Slider Background -->
+        <div class="hero-slider">
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+            <div class="hero-slide"></div>
+        </div>
         
         <div class="container mx-auto px-6 relative z-10">
-            <div class="max-w-4xl mx-auto">
-                <span class="inline-block mb-6 px-3 py-1 border border-ciap-red/30 text-ciap-red text-[10px] uppercase tracking-[0.2em] rounded-full bg-white/50 backdrop-blur-sm">Site Officiel</span>
-                <h1 class="font-display text-5xl md:text-7xl text-ciap-dark mb-8 leading-tight drop-shadow-sm">
-                    Penser l'Afrique, <br/> <span class="text-ciap-red italic font-serif">Penser le Monde</span>
-                </h1>
-                <p class="font-serif text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl mx-auto mb-12">
-                    Le Conseil Inter-Africain de Philosophie fédère les énergies philosophiques du continent et de la diaspora pour répondre aux défis contemporains.
-                </p>
-                <div class="flex flex-col md:flex-row justify-center gap-4">
-                    <a href="statuts.html" class="inline-block bg-ciap-red text-white px-8 py-3 font-sans text-xs font-bold uppercase tracking-widest hover:bg-ciap-dark transition-colors shadow-lg hover:shadow-xl">Découvrir le CIAP</a>
-                    <a href="colloque.html" class="inline-block bg-white text-ciap-dark border border-gray-200 px-8 py-3 font-sans text-xs font-bold uppercase tracking-widest hover:border-ciap-red hover:text-ciap-red transition-colors shadow-sm hover:shadow-md">Dernières Actualités</a>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Content -->
+                <div class="lg:col-span-8 text-left">
+                    <span class="inline-block mb-6 px-3 py-1 border border-white/30 text-white text-[10px] uppercase tracking-[0.2em] rounded-full bg-white/10 backdrop-blur-sm">Site Officiel</span>
+                    <h1 class="font-display text-5xl md:text-7xl text-white mb-8 leading-tight drop-shadow-lg">
+                        Penser l'Afrique, <br/> <span class="text-ciap-red italic font-serif">Penser le Monde</span>
+                    </h1>
+                    <p class="font-serif text-xl md:text-2xl text-white/90 leading-relaxed max-w-2xl mb-12 drop-shadow-md">
+                        Le Conseil Inter-Africain de Philosophie fédère les énergies philosophiques du continent et de la diaspora pour répondre aux défis contemporains.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="statuts.html" class="inline-block bg-ciap-red text-white px-8 py-3 font-sans text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-ciap-red transition-all shadow-lg hover:shadow-xl">Découvrir le CIAP</a>
+                        <a href="colloque.html" class="inline-block bg-white/10 backdrop-blur-md text-white border border-white/20 px-8 py-3 font-sans text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-ciap-dark transition-all shadow-sm">Dernières Actualités</a>
+                    </div>
+                </div>
+
+                <!-- Facebook Box -->
+                <div class="lg:col-span-4 flex justify-center lg:justify-end">
+                    <div class="facebook-box w-full max-w-[300px] animate-fade-in">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="Facebook Logo" class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-6 drop-shadow-lg">
+                        <h3 class="text-white font-display text-xl mb-2">Suivez-nous</h3>
+                        <p class="text-white/70 text-sm mb-6 font-serif italic">Restez connectés avec le CIAP sur les réseaux</p>
+                        <a href="https://www.facebook.com/share/1c6ftHxnhA/" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#1877F2] text-white px-8 py-3 rounded-full font-sans text-xs font-bold uppercase tracking-widest hover:bg-[#166fe5] transition-colors shadow-lg">
+                            S'abonner
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
